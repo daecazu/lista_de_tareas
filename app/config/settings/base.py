@@ -132,5 +132,5 @@ MEDIA_ROOT = '/vol/web/media'
 
 STATIC_ROOT = '/vol/web/static'
 
-#AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'
 

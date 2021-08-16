@@ -39,10 +39,9 @@ Esta lista de instrucciones permitaran realizar una lista del proyecto en la maq
 
 ### Instalación
 
-- copiar/renombrar el archivo de variables de entorno a un archivo de nombre '.env' o por medio del siguiente comando 'cp .env.example .env'
-
-- construir las imagenes por medio del comando 'docker-compose build'
-- levantar las imagenes por medio del comando 'docker-compose up -d'
+- copiar/renombrar el archivo de variables de entorno `.env.example` a un archivo de nombre `.env` o por medio del siguiente comando `cp .env.example .env`
+- construir las imagenes por medio del comando `docker-compose build`
+- levantar las imagenes por medio del comando `docker-compose up -d`
 
 el servicio levantará las imagenes del servicio de django y de postgres
 
@@ -51,7 +50,7 @@ el servicio levantará las imagenes del servicio de django y de postgres
 
 Para lanzar los test necesitas usar el siguiente comando
 
-- docker-compose run --rm django sh -c 'python manage.py test' 
+- `docker-compose run --rm django sh -c 'python manage.py test'` 
 
 
 ### Test de estilo de código
@@ -61,9 +60,13 @@ para la cuál se utiliza la libreria flake8.
 
 Para lanzar los test de estilo de código se utiliza el siguiente comando
 
-- docker-compose run --rm django sh -c 'flake8'
+- `docker-compose run --rm django sh -c 'flake8'`
 
 ## 🎈 Uso <a name="usage"></a>
+
+- Se pueden crear super usuarios usando el comando `docker-compose run --rm django sh -c 'python manage.py createsuperuser'`
+- La creación de usuarios se puede realizar *localhost:8000/api/user/create/*
+- Creación de token para la sesión *localhost:8000/api/user/token/*
 
 
 
@@ -77,6 +80,7 @@ Para lanzar los test de estilo de código se utiliza el siguiente comando
 
 
 ## 🚀 Listado de Tareas <a name = "todo"></a>
+
 Se requiere hacer una app para registrar tareas como se muestra a continuación
 Escribe un REST API en Django para suplir los siguientes requerimientos
 * Los usuarios se deben autenticar
@@ -85,7 +89,7 @@ Escribe un REST API en Django para suplir los siguientes requerimientos
 * El listado de tareas debe ser paginado
 * Agregar validaciones, como no aceptar tareas sin descripción, etc
 * Buscar por descripción
-~~*Escribir test unitarios en el primer commit~~
+* Escribir test unitarios en el primer commit
 
 ## ✍️ Autor <a name = "authors"></a>
 
