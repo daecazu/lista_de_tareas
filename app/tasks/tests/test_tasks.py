@@ -7,11 +7,13 @@ from rest_framework.test import APIClient
 from rest_framework import status
 from django.urls import reverse
 
+TASKS_URL = reverse('task:task-list')
+
+
 def sample_user(email='test@test.com', password='12345678'):
     """create a sample user"""
     return get_user_model().objects.create_user(email, password)
 
-TASKS_URL = reverse('task:task-list')
 
 class ModelTests(TestCase):
     """"""
@@ -24,6 +26,7 @@ class ModelTests(TestCase):
         )
         self.assertEqual(str(task), task.name)
 
+
 class PublicApiTests(TestCase):
     """Test the publicly available Tasks API"""
 
@@ -35,6 +38,7 @@ class PublicApiTests(TestCase):
 
         res = self.client.get(TASKS_URL)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
 
 class PrivateTasksApiTests(TestCase):
     """Test the authorized user tasks API"""
@@ -56,7 +60,7 @@ class PrivateTasksApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
-    
+
     def test_tasks_limited_to_user(self):
         """Test that tasks returned are for the authenticated user"""
         user2 = sample_user(
@@ -90,7 +94,7 @@ class PrivateTasksApiTests(TestCase):
         serializer = TaskSerializer(task)
         self.assertTrue(exists)
         self.assertEqual(res.data, serializer.data)
-    
+
     def test_create_task_invalid(self):
         """Test creating a new task with invalid payload"""
         payload = {
@@ -98,6 +102,3 @@ class PrivateTasksApiTests(TestCase):
         }
         res = self.client.post(TASKS_URL, payload)
         self.assertTrue(res.status_code, status.HTTP_400_BAD_REQUEST)
-    
-
-

@@ -11,11 +11,17 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 
 RUN pip install -r /requirements/dev.txt
 
-
 RUN apk del .tmp-build-deps
+
+RUN adduser -D django
+
+COPY ./compose/django/start /start
+RUN sed -i 's/\r//' /start
+RUN chmod +x /start
+RUN chown django /start
 
 RUN mkdir /app
 COPY ./app /app
 WORKDIR /app
-RUN adduser -D django
+
 USER django

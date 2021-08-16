@@ -39,7 +39,7 @@ Esta lista de instrucciones permitaran realizar una lista del proyecto en la maq
 
 ### Instalación
 
-- copiar/renombrar el archivo de variables de entorno a un archivo de nombre ´.env´ o por medio del siguiente comando ´cp .env.example .env´
+- copiar/renombrar el archivo de variables de entorno a un archivo de nombre '.env' o por medio del siguiente comando 'cp .env.example .env'
 
 - construir las imagenes por medio del comando 'docker-compose build'
 - levantar las imagenes por medio del comando 'docker-compose up -d'
@@ -85,7 +85,7 @@ Escribe un REST API en Django para suplir los siguientes requerimientos
 * El listado de tareas debe ser paginado
 * Agregar validaciones, como no aceptar tareas sin descripción, etc
 * Buscar por descripción
-* Escribir test unitarios en el primer commit
+~~*Escribir test unitarios en el primer commit~~
 
 ## ✍️ Autor <a name = "authors"></a>
 

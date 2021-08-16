@@ -21,7 +21,7 @@ class PublicUserApiTest(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-    
+
     def test_create_valid_user_success(self):
         """"Test Creating user with valid payload is successful"""
         payload = {
