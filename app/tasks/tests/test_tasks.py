@@ -85,7 +85,7 @@ class PrivateTasksApiTests(TestCase):
         self.assertEqual(res.data[0]['name'], task.name)
 
     def test_create_task_sucessfull(self):
-        """Test creating a new Tasks"""
+        """Test creating a new Task"""
         payload = {
             'name': 'Test Task!',
             'description': 'simple description'
