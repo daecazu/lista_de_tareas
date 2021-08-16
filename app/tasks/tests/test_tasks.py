@@ -22,7 +22,8 @@ class ModelTests(TestCase):
 
         task = Task.objects.create(
             user=sample_user(),
-            name='simple task'
+            name='simple task',
+            description='simple task description'
         )
         self.assertEqual(str(task), task.name)
 
@@ -67,8 +68,16 @@ class PrivateTasksApiTests(TestCase):
             'test2@test.com',
             '12345678'
         )
-        Task.objects.create(user=user2, name='second user task')
-        task = Task.objects.create(user=self.user, name='loged user task')
+        Task.objects.create(
+            user=user2,
+            name='second user task',
+            description='simple description'
+        )
+        task = Task.objects.create(
+            user=self.user,
+            name='loged user task',
+            description='simple description'
+        )
 
         res = self.client.get(TASKS_URL)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
@@ -78,7 +87,8 @@ class PrivateTasksApiTests(TestCase):
     def test_create_task_sucessfull(self):
         """Test creating a new Tasks"""
         payload = {
-            'name': 'Test Task!'
+            'name': 'Test Task!',
+            'description': 'simple description'
         }
         res = self.client.post(TASKS_URL, payload)
 
@@ -100,5 +110,11 @@ class PrivateTasksApiTests(TestCase):
         payload = {
             'name': ''
         }
+        payload2 = {
+            'name': 'Test task!',
+            'description': ''
+        } 
         res = self.client.post(TASKS_URL, payload)
         self.assertTrue(res.status_code, status.HTTP_400_BAD_REQUEST)
+        res2 = self.client.post(TASKS_URL, payload2)
+        self.assertTrue(res2.status_code, status.HTTP_400_BAD_REQUEST)
