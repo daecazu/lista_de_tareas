@@ -2,16 +2,17 @@
 from django.conf import settings
 from django.db import models
 
+
 class Task(models.Model):
     """Task model"""
     STATUS_CHOICES = [
-        ('co','completa'),
-        ('in','incompleta')
+        ('co', 'completa'),
+        ('in', 'incompleta')
     ]
     PRIORITY_CHOICES = [
-        ('b','baja'),
-        ('m','media'),
-        ('a','alta')
+        ('b', 'baja'),
+        ('m', 'media'),
+        ('a', 'alta')
     ]
     name = models.CharField(
         max_length=255,

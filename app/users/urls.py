@@ -5,6 +5,6 @@ from users import views
 app_name = 'user'
 
 urlpatterns = [
-    path('create/', views.CreateUserView.as_view(), name='create'),
-    path('token/', views.CreateTokenView.as_view(), name='token')
+    path('api/user/create/', views.CreateUserView.as_view(), name='create'),
+    path('api/user/token/', views.CreateTokenView.as_view(), name='token')
 ]

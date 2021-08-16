@@ -65,11 +65,14 @@ Para lanzar los test de estilo de código se utiliza el siguiente comando
 ## 🎈 Uso <a name="usage"></a>
 
 - Se pueden crear super usuarios usando el comando `docker-compose run --rm django sh -c 'python manage.py createsuperuser'`
-- La creación de usuarios se puede realizar *localhost:8000/api/user/create/*
-- Creación de token para la sesión *localhost:8000/api/user/token/*
+- La schema de documentación del código fue creado usando OpenAPI/swagger y se encuenta disponibles en dos versiones en la siguientes urls *localhost:8000/documentation/* i/o *localhost:8000/redoc/* 
 
+la API consta de 3 endpoints adicionales
+* un endpoint para la creación de usuarios
+* un endpoint para la creación de Token
+* un endopoint que permite operaciones CRUD sobre la creación de tareas
 
-
+la busqueda de tareas se debe realizar por medio `http://localhost:8000/api/tasks/?search=descripcion`
 
 ## ⛏️ Construido usando <a name = "built_using"></a>
 
