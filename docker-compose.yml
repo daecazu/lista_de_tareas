@@ -1,0 +1,36 @@
+volumes:
+    postgres_data: {}
+    postgres_data_backups: {}
+    static_data:
+
+services:
+    django:
+      build:
+        context: .
+        dockerfile: ./compose/django/Dockerfile
+      image: django
+      depends_on:
+        - db
+      env_file:
+        - .env
+      ports:
+        - "${DJANGO_PORTS:-8000:8000}"
+      volumes:
+        - ./app:/app
+      command: >
+        sh -c "python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8000"
+    
+    db:
+     build:
+       context: .
+       dockerfile: ./compose/postgres/Dockerfile
+     image: postgres
+     volumes:
+       - postgres_data:/var/lib/postgresql/data
+       - postgres_data_backups:/backups
+     env_file:
+       - .env
+     ports:
+       - "${DJANGO_PORTS:-5434:5432}"
+    
