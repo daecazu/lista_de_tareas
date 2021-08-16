@@ -60,7 +60,7 @@ class PrivateTasksApiTests(TestCase):
         serializer = TaskSerializer(tasks, many=True)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(res.data, serializer.data)
+        self.assertEqual(res.data['results'], serializer.data)
 
     def test_tasks_limited_to_user(self):
         """Test that tasks returned are for the authenticated user"""
@@ -81,8 +81,8 @@ class PrivateTasksApiTests(TestCase):
 
         res = self.client.get(TASKS_URL)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(res.data), 1)
-        self.assertEqual(res.data[0]['name'], task.name)
+        self.assertEqual(len(res.data['results']), 1)
+        self.assertEqual(res.data['results'][0]['name'], task.name)
 
     def test_create_task_sucessfull(self):
         """Test creating a new Task"""
